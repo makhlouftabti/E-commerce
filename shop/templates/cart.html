@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+        <!-- CART CONTAINER -->
+<div class="content">
+    <div id="cartMainContainer">
+        <h1> Checkout </h1>
+        <h3 id="totalItem"> Total Items: {{count}} </h3>
+
+        <div id="cartContainer">
+            
+        </div>
+
+    </div>
+</div>
+{% if count == 0 %}
+<div class="card text-center">
+    <div class="card-header">
+      Your items
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Oops!!!</h5>
+      <p class="card-text">Your cart is empty </p>
+      <a href="{% url 'index' %}" class="btn btn-primary">Go Back</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+      
+    </div>
+</div>
+{% else %}
+<div class="card text-center">
+  <div class="card-header">
+    Your items
+  </div>
+  <div class="card-body">
+  {% for item in items %}
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{item.picture.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.price}} $</p>
+        <p class="card-text"><small class="text-body-secondary">{{item.brand}}</small></p>
+      </div>
+      <div class="card-footer">
+        <a href="{% url 'logout' %}" class="btn btn-success">Confirm purchase</a>
+          
+        <a class="text-danger" href="{% url 'delete_item' item.id %}"><i class="fas fa-trash-alt"></i></a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+  </div>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .content {
+        padding-top: 100px;
+        padding-left: 50px;
+    }
+</style>
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

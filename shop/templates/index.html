@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+{% include 'parts/slider.html' %}
+<div class="card" width="100">
+    
+        <div class="card-body">
+      <h5 class="card-title">You're new here?</h5>
+      <p class="card-text"><a href="">You can subsribe right here >></a></p>
+    </div>
+    <div class="card-footer">
+      <small class="text-body-secondary">Last updated 3 mins ago</small>
+    </div>
+  </div>
+<div class="card-group">
+    <div class="card">
+        <img src="{% static 'img/accessories.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Our accessories</h5>
+        <p class="card-text">Welcome to the best place for shopping. We have a lot of brands with the best prices</p>
+      </div>
+      
+    </div>
+    <div class="card-group">
+        <div class="card">
+          <img src="{% static 'img/clothes.jpg' %}" class="card-img-top" alt="..." width="200" height="200">
+          <div class="card-body">
+            <h5 class="card-title">Our accessories</h5>
+            <p class="card-text">Welcome to the best place for shopping. We have a lot of brands with the best prices</p>
+          </div>
+          
+        </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

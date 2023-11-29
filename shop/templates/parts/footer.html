@@ -1,0 +1,37 @@
+
+<footer class="bot0">
+    <section>    
+        <div id="containerFooter">
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p class="areat">Have questions or comments?</p>
+                <p>Contact us HERE :</p>
+                <form action="{% url 'send_email' %}" method="POST">
+                    {% csrf_token %}
+                    {% if not user.is_authenticated %}
+                    <input type="email" name="email" placeholder="Enter your email">
+                    {% endif %}
+                    <textarea name="comments" placeholder="Your comments..." class="areat"></textarea>
+                    <button type="submit" class="btn btn-dark" target="blank">Submit</button>
+                    {% for msg in messages %}
+                    <h3>{{msg}}</h3>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+            
+        </div>
+        <div id="credit"><a href="https://www.linkedin.com/in/makhlouf-tabti-12158225a/" target="blank"> © Makhlouf Tabti </a> &nbsp&nbsp&nbsp | &nbsp&nbsp&nbsp <a href="https://www.github.com/makhlouftabti" target="_blank"> DJANGO </a></div>
+    </section>
+    <style>
+        .bot0{
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        .areat{
+            width: 200%;
+        }
+    </style>
+</footer>

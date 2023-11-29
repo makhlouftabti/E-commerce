@@ -1,0 +1,38 @@
+{% load static %}
+<header>
+    <section>
+        <!-- MAIN CONTAINER -->
+        <div id="container">
+            <!-- SHOP NAME -->
+            <div id="shopName"><a href="{% url 'index'%}"> <b>SHOP</b>LANE </a></div>
+                <!-- COLLCETIONS ON WEBSITE -->
+                <div id="collection">
+                    <div id="clothing"><a href="{% url 'clothes'%}"> CLOTHING </a></div>
+                    <div id="accessories"><a href="{% url 'accessories'%}"> ACCESSORIES </a></div>
+                </div>
+                <!-- SEARCH SECTION -->
+                <form method="GET" action="{% url 'search' %}">
+                <div id="search">
+                    <i class="fas fa-search search"></i>
+                    <input type="text" id="input" name="searchBox" placeholder="Search for Clothing and Accessories">
+                </div>
+            </form>
+                <!-- USER SECTION (CART AND USER ICON) -->
+                {% if user.is_authenticated %}
+                <div id="user">
+                    <a href="{% url 'cart' user.id %}"> <i class="fas fa-shopping-cart addedToCart"></i></a>
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="{{user.customer.avatar.url}}" width="30" height="30" alt="" loading="lazy">
+                    </a>
+                    <a href="{% url 'logout' %}" class="btn btn-light">Logout</a>
+                </div>
+                {% else %}
+                <div id="user">
+                    <a href="{% url 'login' %}" class="btn btn-light"> Login </a>
+                    <a href="{% url 'register' %}" class="btn btn-light"> Register </a>
+                </div>
+                {% endif %}
+        </div>
+
+    </section>
+</header>
